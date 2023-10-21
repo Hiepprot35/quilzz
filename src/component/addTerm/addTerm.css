@@ -1,0 +1,71 @@
+.field_Term {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+
+    box-shadow: inset;
+}
+.header_addTerm
+{
+    display: flex;
+    justify-content: space-evenly;
+
+}
+.avatar_field button {
+    margin: 1rem;
+    border: 1px dashed black;
+    background-color: transparent;
+    border-radius: 0.2rem;
+    transition: 250ms;
+    display: flex;
+    padding: 0.4rem;
+    align-items: center;
+}
+.chonanh svg:hover{
+    fill: yellow;
+}
+.chonanh p
+{
+    color: black;
+    text-transform: uppercase;
+}
+.chonanh {
+    font-size: 0.6rem;
+    font-weight: 600;
+    color: white;
+}
+
+.container {
+    display: flex;
+    background-color: white;
+    border-radius: 0.6rem;
+    flex-direction: column;
+    margin: 1rem;
+    overflow: hidden;
+}
+
+.color_picker {
+    position: absolute;
+    margin-left: 20rem;
+    display: none;
+    z-index: 99;
+}
+
+.input_field {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-bottom: 2px solid rgb(211, 205, 205);
+}
+
+.input_field span {
+    display: block;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    box-shadow: 0 0.125rem 0.3125rem #1a1d281f;
+    background-image: conic-gradient(#ffcd1f 14%, #ffcd1f 27%, #39a0ed 48%, #39a0ed 60%, #faa6ff 88%, #faa6ff, #ffcd1f 14%), linear-gradient(180deg, #ffcd1f, #ffcd1f);
+    border: 2px solid rgb(211, 205, 205);
+    margin: 1rem;
+    cursor: pointer;
+}

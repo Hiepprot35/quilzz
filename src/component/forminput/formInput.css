@@ -1,0 +1,98 @@
+.formInput {
+    display: flex;
+    flex-direction: column;
+    width: 30%;
+    position: relative;
+}
+
+.formInput input {
+    padding-bottom: 1rem;
+    height: 1rem;
+    background-color: transparent;
+    border: none;
+    font-size: 1rem;
+    width: 100%;
+    color: #110f0f;
+    transition: 150ms;
+    border-bottom: 2px solid rgba(0, 0, 0, 0.12);
+}
+
+.underline {
+    position: absolute;
+    bottom: 0;
+    height: 2px;
+    width: 100%;
+    left: 0;
+}
+
+input:focus {
+    outline: none;
+}
+
+.underline:before {
+    position: absolute;
+    content: "";
+    height: 2px;
+    width: 100%;
+    background: #3498db;
+    transform: scaleX(0);
+    transform-origin: center;
+    transition: transform 0.3s ease;
+    left: 0;
+    right: 0;
+}
+
+.formInput input:focus~label,
+.formInput input:valid~label{
+    transform: translateY(-2rem);
+    font-size: 0.8rem;
+    color: #3498db;
+    border: none;
+}
+
+.formInput input:focus~.underline:before {
+    transform: scale(1);
+}
+
+
+
+.formInput label {
+    position: absolute;
+    pointer-events: none;
+    bottom: 10px;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+
+}
+
+
+
+
+
+.dateInput {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.formInput input:invalid[focused="true"]~span {
+    display: block;
+}
+
+.TEXTDATE {
+    width: 30%;
+    margin: 10px;
+}
+
+
+
+.avatar_field {
+    justify-content: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.select_column {
+    display: flex;
+}
