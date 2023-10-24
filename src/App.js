@@ -8,7 +8,7 @@ function App() {
   return (
     <Router>
       <Routes>
-        <Route path="/" element={<AddDocument />} />
+        <Route path="*" element={<AddDocument />} />
         <Route path="/view" element={<ViewTerm />} />
       </Routes>
     </Router>
