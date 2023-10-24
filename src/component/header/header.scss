@@ -1,0 +1,16 @@
+.Header_container
+{
+    display: flex;
+    position: relative;
+    height: 50px;
+    width: 100%;
+    background-color: rgb(255, 255, 255);
+    justify-content: space-around;
+    align-content: center;
+    align-items: center;
+}
+.Header_container a
+{
+    color: black;
+    
+}

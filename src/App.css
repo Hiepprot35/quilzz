@@ -1,11 +1,13 @@
 .App {
   text-align: center;
   background-color: rgba(220, 212, 212, 0.558);
-  padding: 4rem;
 
 }
 
-
+a
+{
+  text-decoration: none;
+}
 .App-logo {
   height: 40vmin;
   pointer-events: none;
