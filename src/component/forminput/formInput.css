@@ -45,11 +45,22 @@ input:focus {
 .formInput input:focus~label,
 .formInput input:valid~label{
     transform: translateY(-2rem);
-    font-size: 0.8rem;
+    font-size: 0.9rem;
     color: #3498db;
     border: none;
 }
-
+input[type="submit"] {
+    /* CSS properties và giá trị ở đây */
+    background-color: #007bff;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 1rem;
+}
+.chonanh:hover
+{
+    cursor: pointer;
+}
 .formInput input:focus~.underline:before {
     transform: scale(1);
 }

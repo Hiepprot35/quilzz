@@ -1,0 +1,120 @@
+audio {
+  height: 30px;
+  
+}
+
+.disk_img {
+  margin-bottom: 2rem;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  /* animation: disk_rotate infinite 20s linear; */
+
+}
+
+@keyframes disk_rotate {
+  from {
+      transform: rotate(0deg);
+  }
+
+  to {
+      transform: rotate(360deg);
+  }
+}
+
+
+
+.music_wave {
+  position: relative;
+  width: 60%;
+  display: flex;
+}
+.mota_tieude
+{
+  width: 40%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+.music_wave span {
+  width: 5px;
+  height: 5px;
+  bottom: 0px;
+  position: absolute;
+  background: rgb(254, 254, 254);
+  animation: bodong 0.5s infinite ease;
+  animation-play-state: paused;
+}
+@for $i from 1 through 25 {
+  .music_wave span:nth-child(#{$i}) {
+    left:  $i*7px;
+    animation-delay:  random($i)*0.2s;
+  }
+}
+// .music_wave span:first-child {
+//   left: 0px;
+//   animation-delay: .3s;
+// }
+
+// .music_wave span:nth-child(2) {
+//   left: 7px;
+//   animation-delay: .4s;
+
+// }
+
+// .music_wave span:nth-child(3) {
+//   left: 14px;
+//   animation-delay: .6s;
+// }
+
+// .music_wave span:nth-child(4) {
+//   left: 21px;
+//   animation-delay: .8s;
+// }
+
+// .music_wave span:nth-child(5) {
+//   left: 28px;
+//   animation-delay: 1s;
+// }
+
+// .music_wave span:nth-child(6) {
+//   left: 35px;
+//   animation-delay: 1.2s;
+// }
+
+// .music_wave span:nth-child(7) {
+//   left: 42px;
+//   animation-delay: 1.4s;
+// }
+
+// .music_wave span:nth-child(8) {
+//   left: 49px;
+//   animation-delay: .8s;
+// }
+
+@keyframes bodong {
+  0% {
+      height: 5px;
+      background: bule;
+  }
+
+  30% {
+      height: 15px;
+      background: bule;
+  }
+
+  60% {
+      height: 20px;
+      background: bule;
+  }
+
+  80% {
+      height: 15px;
+      background: bule;
+  }
+
+  100% {
+      height: 5px;
+      background: bule;
+  }
+}

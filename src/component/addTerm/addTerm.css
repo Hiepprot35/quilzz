@@ -21,7 +21,11 @@
     padding: 0.4rem;
     align-items: center;
 }
-.chonanh svg:hover{
+svg
+{
+    transition: 250ms linear;
+}
+.container svg:hover{
     fill: yellow;
 }
 .chonanh p

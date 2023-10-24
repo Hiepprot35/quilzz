@@ -10,12 +10,12 @@ export default function InputForm(props) {
     setFocused(true);
   };
   return (
-    <div className="formInput">
+    <div className="formInput" style={props.style}>
       <input
         style={{ color: props.color }}
         {...inputProps}
-        onChange={onChange}
-        onBlur={handleFocus}
+        name={name}
+        onBlur={onChange}
         value={value}
         focused={focused.toString()}
         placeholder={placeholder}

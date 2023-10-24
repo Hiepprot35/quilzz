@@ -18,6 +18,7 @@ export default function AddTerm(props) {
         setSendTerm({ ...sendTerm, MauSac: newColor.hex });
     };
     const [avatarURL, setAvatarURL] = useState();
+
     const [errorMessage, setErrorMessage] = useState("");
     const fileInputRef = useRef(null)
     const [BufferImgInput, setBufferImgInput] = useState("")
@@ -29,11 +30,11 @@ export default function AddTerm(props) {
     const show_ColorPicker = () => {
         if (colorPicker && colorPicker.current) {
             const currentOpacity = parseFloat(colorPicker.current.style.opacity);
-            console.log( colorPicker.current.style.display)
-            if (colorPicker.current.style.display!=="block") {
+            console.log(colorPicker.current.style.display)
+            if (colorPicker.current.style.display !== "block") {
                 console.log("a")
                 colorPicker.current.style.display = "block";
-            } else  {
+            } else {
                 console.log("b")
 
                 colorPicker.current.style.display = "none";
@@ -57,6 +58,18 @@ export default function AddTerm(props) {
             }
         }
     };
+    const onChange = (e) => {
+        if (e.target.value != "") {
+
+            setSendTerm({ ...sendTerm, [e.target.name]: e.target.value })
+        }
+    }
+    useEffect(() => {
+        if (sendTerm.TiengAnh!="") {
+            props.setArrayOfObjects((pre) => [...pre, sendTerm])
+        }
+    }, [props.isSubmit])
+
     return (
         <div className="container">
             <div className="input_field" ref={background_input}>
@@ -66,21 +79,23 @@ export default function AddTerm(props) {
                     <ChromePicker color={sendTerm?.MauSac} onChange={handleColorChange} />
                 </div>
             </div>
+
             <div className="field_Term">
                 <p>
                     {props.count}
                 </p>
                 <InputForm
-                    name={"term"}
+                    name={"TiengViet"}
                     label={"Thuật ngữ"}
                     color={sendTerm?.MauSac}
-                    onChange={setSendTerm}
+                    onChange={onChange}
                 >
                 </InputForm>
                 <InputForm
-                    name={"term"}
+                    name={"TiengAnh"}
                     label={"Định nghĩa"}
                     color={sendTerm?.MauSac}
+                    onChange={onChange}
                 >
                 </InputForm>
                 <div className="avatar_field"
@@ -101,7 +116,7 @@ export default function AddTerm(props) {
                         ref={fileInputRef}
                         accept="image/png, image/jpeg, image/webp"
                         hidden
-                        required
+
                     >
                     </input>
                     {avatarURL && <img className="avatarImage" src={avatarURL} style={{ width: "100px", height: "100px" }} alt="Avatar"></img>
