@@ -9,8 +9,8 @@ function App() {
     <BrowserRouter>
 
       <Routes>
-        <Route path="*" element={<AddDocument />} />
-        <Route path="/view" element={<ViewTerm />} />
+        {/* <Route path="*" element={<AddDocument />} /> */}
+        <Route path="/" element={<ViewTerm />} />
       </Routes>
     </BrowserRouter>
 
