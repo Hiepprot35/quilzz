@@ -45,7 +45,7 @@ export default function ViewTerm() {
                     </div>
                     {
                        term&& term.length>0&&
-                        <Card tiengviet={term[currentIndex]?.TiengViet} tienganh={term[currentIndex]?.TiengAnh} term={term[currentIndex]}></Card>
+                        <Card term={term[currentIndex]}></Card>
                     }
                     <div>
 

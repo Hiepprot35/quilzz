@@ -15,7 +15,7 @@ export default function AddDocument() {
         setCountNumber([...countNumber, countNumber[countNumber.length - 1] + 1]);
     }
     useEffect(() => {
-        console.log(arrayOfObjects)
+        creatTerm()
 
     }, [arrayOfObjects])
     const audioRef = useRef(null);
