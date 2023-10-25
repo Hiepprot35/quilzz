@@ -1,7 +1,9 @@
 import InputForm from "../forminput/inputForm"
 import './addTerm.css'
 import { ChromePicker } from 'react-color';
-
+import { ResizeImg } from "../../function/ResizeImg";
+import blobToBuffer from "../../function/BlobtoBuffer";
+import { Buffer } from "buffer";
 import { useState, useEffect, useRef } from "react";
 export default function AddTerm(props) {
     const [color, setColor] = useState('#000');
@@ -27,6 +29,20 @@ export default function AddTerm(props) {
             background_input.current.style.background = `url('${avatarURL}') no-repeat center/cover`;
         }
     }, [avatarURL])
+    useEffect(() => {
+        if (BufferImgInput) {
+
+            const fetchData = async () => {
+                ResizeImg(BufferImgInput, async (newBlob) => {
+                    const imgBufer = await blobToBuffer(newBlob)
+                    setSendTerm({ ...sendTerm, HinhAnh: imgBufer })
+
+                })
+            };
+
+            fetchData();
+        }
+    }, [BufferImgInput]);
     const show_ColorPicker = () => {
         if (colorPicker && colorPicker.current) {
             const currentOpacity = parseFloat(colorPicker.current.style.opacity);
@@ -112,6 +128,7 @@ export default function AddTerm(props) {
                     </button>
                     <input
                         type="file"
+                        name="HinhAnh"
                         onChange={imgInput}
                         ref={fileInputRef}
                         accept="image/png, image/jpeg, image/webp"

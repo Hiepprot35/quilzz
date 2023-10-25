@@ -16,12 +16,35 @@ export default function AddDocument() {
     }
     useEffect(() => {
         console.log(arrayOfObjects)
+
     }, [arrayOfObjects])
     const audioRef = useRef(null);
 
     const playAudio = () => {
         audioRef.current.play();
     };
+    const creatTerm = async () => {
+        if (arrayOfObjects) {
+
+            const URL = `${process.env.REACT_APP_DB_HOST}/api/insertTerm`
+            try {
+                const res = await fetch(URL, {
+                    method: 'POST',
+                    headers:
+                    {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(arrayOfObjects)
+                    
+                })
+
+                const data = await res.json();
+
+            } catch (error) {
+                console.log(error)
+            }
+        }
+    }
     const addAnimation = () => {
         console.log("add")
         if (disk_img && disk_img.current) {
@@ -66,7 +89,7 @@ export default function AddDocument() {
             <Header />
             <div className=''>
 
-                <form >
+                <form onSubmit={SubmitClick}>
                     <div>
                         <div>
                         </div>
@@ -99,7 +122,10 @@ export default function AddDocument() {
                                 </audio>
                             </div>
                         </div>
-                        <input onClick={SubmitClick} type='submit'></input>
+                        <div className='one_button'>
+
+                            <input type='submit'></input>
+                        </div>
 
                         <AddTerm count={1} setArrayOfObjects={setArrayOfObjects} isSubmit={isSubmit}></AddTerm>
                         {

@@ -22,8 +22,17 @@ audio {
   }
 }
 
+.one_button{
+  display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.one_button input:hover{
+  cursor: pointer;
+  background-color: rgba(0, 208, 255, 0.458);
+  transition: 250ms;
 
-
+}
 .music_wave {
   position: relative;
   width: 60%;

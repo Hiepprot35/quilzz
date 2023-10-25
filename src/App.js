@@ -9,7 +9,7 @@ function App() {
     <BrowserRouter>
 
       <Routes>
-        <Route path="/view" element={<AddDocument />} />
+        <Route path="/add" element={<AddDocument />} />
         <Route path="/" element={<ViewTerm />} />
       </Routes>
     </BrowserRouter>
