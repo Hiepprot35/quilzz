@@ -11,11 +11,16 @@ export default function AddTerm(props) {
         TiengViet: "",
         TiengAnh: "",
         HinhAnh: "",
+        Mota:"",
+        title:"",
         MauSac: "#000",
     })
     const colorPicker = useRef(null)
     const background_input = useRef(null)
+    useEffect(()=>{
 
+        console.log(document.cookie)
+    },[])
     const handleColorChange = (newColor) => {
         setSendTerm({ ...sendTerm, MauSac: newColor.hex });
     };

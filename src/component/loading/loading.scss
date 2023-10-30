@@ -1,0 +1,71 @@
+.Loading_container {
+    display: flex;
+    width: 100vw;
+    height: 100vh;
+    align-items: center;
+    justify-content: center;
+}
+.Loading_container span{
+font-size: 3rem;
+font-weight: 800;
+}
+@import url(https://fonts.googleapis.com/css?family=Audiowide);
+
+body {
+  margin: 0;
+}
+.Loading_container {
+  height: 100vh;
+  background: #773d8c; 
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.loading {
+  display: flex;
+  flex-direction: row;
+}
+.loading__letter {
+  font-size: 88px;
+  font-weight: normal;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  font-family: "Audiowide";
+  color: #fec468;
+  animation-name: bounce;
+  animation-duration: 2s;
+  animation-iteration-count: infinite;
+}
+@for $i from 1 through 10 {
+    .loading__letter:nth-child(#{$i}) {
+      left:  $i*7px;
+      animation-delay:  0.1+$i*0.1s;
+    }
+  }
+
+@keyframes bounce {
+  0% {
+    transform: translateY(0px)
+  }
+  40% {
+    transform: translateY(-40px);
+  }
+  80%,
+  100% {
+    transform: translateY(0px);
+  }
+}
+
+
+@media (max-width: 700px) {
+  .loading__letter {
+    font-size: 50px;
+  }
+}
+
+@media (max-width: 340px) {
+  .loading__letter {
+    font-size: 40px;
+  }
+}

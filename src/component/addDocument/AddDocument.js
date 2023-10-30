@@ -4,7 +4,7 @@ import InputForm from '../forminput/inputForm';
 import ReactDOM from 'react-dom';
 import Header from '../header/header';
 import './addDocument.scss'
-export default function AddDocument() {
+export default function AddDocument(props) {
     document.title = "Add Document"
     const disk_img = useRef(null)
     const [arrayOfObjects, setArrayOfObjects] = useState([]);
@@ -16,15 +16,11 @@ export default function AddDocument() {
     }
     useEffect(() => {
         creatTerm()
-
     }, [arrayOfObjects])
-    const audioRef = useRef(null);
 
-    const playAudio = () => {
-        audioRef.current.play();
-    };
+    const audioRef = useRef(null);
     const creatTerm = async () => {
-        if (arrayOfObjects) {
+        if (arrayOfObjects.length > 0) {
 
             const URL = `${process.env.REACT_APP_DB_HOST}/api/insertTerm`
             try {
@@ -35,7 +31,7 @@ export default function AddDocument() {
                         'Content-Type': 'application/json'
                     },
                     body: JSON.stringify(arrayOfObjects)
-                    
+
                 })
 
                 const data = await res.json();
@@ -81,15 +77,16 @@ export default function AddDocument() {
         }
     }
     const SubmitClick = () => {
-        setIsSubmit(!isSubmit)
+            setIsSubmit(!isSubmit)
+            console.log(arrayOfObjects)
     }
 
     return (
         <>
-            <Header />
+            <Header link={props.link} />
             <div className=''>
 
-                <form onSubmit={SubmitClick}>
+                <form>
                     <div>
                         <div>
                         </div>
@@ -123,8 +120,7 @@ export default function AddDocument() {
                             </div>
                         </div>
                         <div className='one_button'>
-
-                            <input type='submit'></input>
+                            {/* <input type='submit'></input> */}
                         </div>
 
                         <AddTerm count={1} setArrayOfObjects={setArrayOfObjects} isSubmit={isSubmit}></AddTerm>
@@ -152,6 +148,8 @@ export default function AddDocument() {
                     </div>
 
                 </form>
+                <button onClick={SubmitClick}>Click</button>
+
             </div>
 
         </>
