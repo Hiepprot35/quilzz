@@ -1,14 +1,17 @@
 import './viewTerm.scss'
 import Header from '../header/header'
 import Card from '../card/card'
+import { useParams } from 'react-router-dom';
+
 import Loading from '../loading/loading';
 import { useEffect, useState } from 'react';
 export default function ViewTerm(props) {
+    const { title } = useParams();
 
     const [term, setTerm] = useState()
 
     const getTerm = async () => {
-        const URL = `${process.env.REACT_APP_DB_HOST}/api/allTerm`
+        const URL = `${process.env.REACT_APP_DB_HOST}/api/allTerm/${title}`
         console.log(URL)
         try {
             const res = await fetch(URL)
@@ -20,12 +23,12 @@ export default function ViewTerm(props) {
 
     }
     useEffect(() => {
-        setTimeout(getTerm,[2000])
-        
+        setTimeout(getTerm, [1000])
+
     }, [])
     useEffect(() => {
-        console.log(term)
-    }, [term])
+        console.log(title)
+    }, [])
 
     const [currentIndex, setCurrentIndex] = useState(0);
     const prevSlide = () => {
@@ -42,26 +45,37 @@ export default function ViewTerm(props) {
                 term ?
                     <div>
                         < Header link={props.link} />
-                        <div className='cards'>
+                        <div className='conatainer_Term'>
 
-                            <div className='cards_container'>
-                                <div>
+                            <div className='cards'>
 
-                                    <span className="previous round" onClick={prevSlide}>&#8249;</span>
+                                <div className='cards_container'>
+                                    <div>
+
+                                        <span className="previous round" onClick={prevSlide}>&#8249;</span>
+                                    </div>
+                                    {
+                                        term && term.length > 0 &&
+                                        <Card term={term[currentIndex]}></Card>
+                                    }
+                                    <div>
+
+                                        <span className="next round" onClick={nextSlide}>&#8250;</span>
+                                    </div>
+
                                 </div>
-                                {
-                                    term && term.length > 0 &&
-                                    <Card term={term[currentIndex]}></Card>
-                                }
-                                <div>
+                            </div>
+                            <div className='Count_fields'>
+                                <span>
 
-                                    <span className="next round" onClick={nextSlide}>&#8250;</span>
-                                </div>
+                                    {currentIndex + 1}/{term?.length}
+                                </span>
 
                             </div>
                         </div>
-                    </div >:<Loading></Loading>
-    }
+
+                    </div > : <Loading></Loading>
+            }
         </>
     )
 }

@@ -11,6 +11,10 @@ export default function AddDocument(props) {
     const [isSubmit, setIsSubmit] = useState(false)
     const music_wave = useRef(null)
     const [countNumber, setCountNumber] = useState([2])
+    const [getDocument, setDocument] = useState({
+        MoTa: "",
+        title: ""
+    })
     const addComponent = () => {
         setCountNumber([...countNumber, countNumber[countNumber.length - 1] + 1]);
     }
@@ -42,7 +46,6 @@ export default function AddDocument(props) {
         }
     }
     const addAnimation = () => {
-        console.log("add")
         if (disk_img && disk_img.current) {
             console.log(disk_img.current)
             disk_img.current.style.animation = "disk_rotate infinite 20s linear"
@@ -77,16 +80,23 @@ export default function AddDocument(props) {
         }
     }
     const SubmitClick = () => {
-            setIsSubmit(!isSubmit)
-            console.log(arrayOfObjects)
+        setIsSubmit(!isSubmit)
     }
+    const onChange = (e) => {
+        if (e.target.value != "") {
 
+            setDocument({...getDocument, [e.target.name]: e.target.value })
+        }
+    }
+    // useEffect(() => {
+    //     console.log(getDocument)
+    // }, [getDocument])
     return (
         <>
             <Header link={props.link} />
             <div className=''>
 
-                <form>
+                <form onSubmit={SubmitClick}>
                     <div>
                         <div>
                         </div>
@@ -97,11 +107,14 @@ export default function AddDocument(props) {
                                     name={"title"}
                                     label={"Nhập tiêu đề"}
                                     style={{ width: "100%" }}
+                                    onChange={onChange}
                                 />
                                 <InputForm
-                                    name={"title"}
+                                    name={"MoTa"}
                                     style={{ width: "100%" }}
                                     label={"Nhập mô tả"}
+                                    onChange={onChange}
+
                                 />
                             </div>
 
@@ -120,15 +133,15 @@ export default function AddDocument(props) {
                             </div>
                         </div>
                         <div className='one_button'>
-                            {/* <input type='submit'></input> */}
+                            <input type='submit'></input>
                         </div>
 
-                        <AddTerm count={1} setArrayOfObjects={setArrayOfObjects} isSubmit={isSubmit}></AddTerm>
+                        <AddTerm count={1} setArrayOfObjects={setArrayOfObjects} isSubmit={isSubmit} getDocument={getDocument}></AddTerm>
                         {
                             countNumber.map((e, i) => {
                                 return (
                                     <div key={i}>
-                                        <AddTerm count={e} setArrayOfObjects={setArrayOfObjects} isSubmit={isSubmit} />
+                                        <AddTerm count={e} setArrayOfObjects={setArrayOfObjects} isSubmit={isSubmit} getDocument={getDocument} />
                                     </div>
                                 )
                             })
@@ -148,7 +161,7 @@ export default function AddDocument(props) {
                     </div>
 
                 </form>
-                <button onClick={SubmitClick}>Click</button>
+                {/* <button onClick={SubmitClick}>Thêm từ</button> */}
 
             </div>
 

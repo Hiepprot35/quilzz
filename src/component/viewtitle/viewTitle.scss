@@ -1,0 +1,21 @@
+.title_text {
+    transition: 250ms;
+    border: 1px solid rgb(196, 187, 187);
+    background-color: white;
+    width: 20%;
+    margin: 1rem;
+}
+
+.title_left {
+    padding: 2rem;
+}
+
+.container_Title {
+    display: flex;
+    justify-content: space-around;
+}
+
+.title_left:hover {
+    cursor: pointer;
+    background-color: rgb(228, 213, 213);
+}

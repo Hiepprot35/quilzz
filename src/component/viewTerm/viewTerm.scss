@@ -4,6 +4,13 @@ body {
     background: #eee;
     // font-family: 'Lily Script One';
 }
+.conatainer_Term
+{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
 .round
 {
     padding: 0.5rem 1rem;
